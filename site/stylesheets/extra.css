@@ -1,0 +1,419 @@
+
+/* =====================================
+   BOREALIS DESIGN SYSTEM
+   ===================================== */
+
+:root {
+  --b-blue: #293c82;
+  --b-purple: #6243a2;
+  --b-violet: #8658b4;
+  --b-pink: #e0b4e8;
+}
+
+/* Light theme */
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #48388c;
+  --md-primary-fg-color--light: #7250b8;
+  --md-primary-fg-color--dark: #293c82;
+  --md-accent-fg-color: #49348f;
+  --md-typeset-a-color: #49348f;
+  --md-default-bg-color: #f7f4fd;
+
+  --home-surface: #ffffff;
+  --home-text: #29223e;
+  --home-muted: #514963;
+  --home-border: #d9d0ea;
+}
+
+/* Dark theme */
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #463579;
+  --md-accent-fg-color: #d6b5ff;
+  --md-typeset-a-color: #d6b5ff;
+
+  --home-surface: #29243a;
+  --home-text: #f5f0ff;
+  --home-muted: #d0c6e3;
+  --home-border: #51466c;
+}
+
+
+/* Borealis dark mode */
+[data-md-color-scheme="slate"] {
+  --md-hue: 225;
+  --md-default-bg-color: #0d0f20;
+  --md-default-fg-color: #E9EAF4;
+  --md-primary-fg-color: #252A48;
+  --md-accent-fg-color: #B9A0ED;
+}
+
+/* Homepage hero: replace */
+[data-md-color-scheme="slate"] .hero {
+  background: linear-gradient(
+    115deg,
+    #293D78 0%,
+    #493B83 58%,
+    #67519B 100%
+  );
+  padding: 3.5rem 4rem;
+  border-radius: 1.25rem;
+}
+
+/* Softer card surfaces */
+[data-md-color-scheme="slate"] .guide-card {
+  background: #22263B;
+  border: 1px solid #383B56;
+}
+
+/* Reduce hero size on smaller screens */
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 1.5rem;
+  }
+}
+
+
+/* =====================================
+   HEADER AND NAVIGATION
+   ===================================== */
+
+.md-header {
+  background: linear-gradient(
+    110deg,
+    #293c82,
+    #6243a2 65%,
+    #8658b4
+  );
+}
+
+/* Force readable white header text */
+
+.md-header,
+.md-header *,
+.md-header__title,
+.md-header__button,
+.md-header .md-search__icon {
+  color: #ffffff;
+}
+
+/* Built-in header search */
+
+.md-header .md-search__form {
+  background: rgba(19, 15, 55, 0.35);
+  border-radius: 8px;
+}
+
+.md-header .md-search__input {
+  color: #ffffff;
+}
+
+.md-header .md-search__input::placeholder {
+  color: #f4efff;
+}
+
+/* Horizontal navigation */
+
+.md-tabs {
+  background: #433482;
+}
+
+.md-tabs__link {
+  color: #eee8ff;
+  opacity: 1;
+  font-weight: 600;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover,
+.md-tabs__item--active .md-tabs__link {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.md-tabs__item--active {
+  border-bottom: 3px solid #f0b8ee;
+}
+
+/* =====================================
+   HOMEPAGE
+   ===================================== */
+
+.md-grid {
+  max-width: 1440px;
+}
+
+.homepage-shell {
+  background:
+    radial-gradient(circle at top left, rgba(120, 90, 200, 0.10), transparent 35%),
+    radial-gradient(circle at top right, rgba(70, 110, 210, 0.08), transparent 30%);
+}
+
+.borealis-home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 8px 60px;
+}
+
+/* Gradient hero */
+
+.borealis-hero {
+  padding: 55px 48px;
+  border-radius: 18px;
+  background: linear-gradient(
+    115deg,
+    #293c82 0%,
+    #6243a2 62%,
+    #a16bca 100%
+  );
+  color: #ffffff;
+}
+
+.borealis-hero .hero-eyebrow {
+  color: #eee2ff;
+  font-size: 0.7rem;
+  letter-spacing: 0.13em;
+  font-weight: 700;
+}
+
+.md-typeset .borealis-hero h1 {
+  color: #ffffff;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 750;
+  line-height: 1.2;
+  margin: 12px 0 14px;
+}
+
+.borealis-hero .hero-description {
+  color: #ffffff;
+  font-size: 1rem;
+  max-width: 650px;
+  line-height: 1.65;
+}
+
+/* Search field */
+
+.hero-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-top: 28px;
+  max-width: 760px;
+  cursor: pointer;
+}
+
+.hero-search-icon {
+  font-size: 1.5rem;
+  color: #49348f;
+}
+
+.hero-search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  color: #29223e;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.hero-search input::placeholder {
+  color: #514963;
+  opacity: 1;
+}
+
+/* =====================================
+   GUIDE CARDS
+   ===================================== */
+
+.borealis-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 26px;
+}
+
+.md-typeset .borealis-card {
+  display: block;
+  padding: 28px;
+  border: 1px solid var(--home-border);
+  border-radius: 16px;
+  background: var(--home-surface);
+  color: var(--home-text);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.borealis-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(47, 32, 94, 0.12);
+}
+
+.card-icon {
+  display: inline-flex;
+  width: 46px;
+  height: 46px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  color: #292267;
+  font-weight: 750;
+  font-size: 0.9rem;
+}
+
+.card-icon.blue {
+  background: #c8dfff;
+}
+
+.card-icon.purple {
+  background: #e1d1ff;
+}
+
+.card-icon.pink {
+  background: #f4d4e9;
+}
+
+.card-icon.violet {
+  background: #d9d5ff;
+}
+
+.md-typeset .borealis-card h2 {
+  color: var(--home-text);
+  margin: 18px 0 8px;
+  font-size: 1.1rem;
+  font-weight: 750;
+}
+
+.borealis-card p {
+  color: var(--home-muted);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.borealis-card .card-link {
+  color: var(--md-typeset-a-color);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* =====================================
+   DARK MODE
+   ===================================== */
+
+[data-md-color-scheme="slate"] .borealis-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================================
+   MOBILE
+   ===================================== */
+
+@media screen and (max-width: 760px) {
+  .borealis-hero {
+    padding: 32px 24px;
+  }
+
+  .borealis-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .md-typeset .borealis-card {
+    padding: 22px;
+  }
+}
+
+
+/* ==========================================
+   Borealis: targeted visual refinements
+   Preserve existing homepage layout
+   ========================================== */
+
+/* LIGHT MODE */
+[data-md-color-scheme="default"] {
+  --md-code-bg-color: #dfdaeb;
+  --md-code-fg-color: #262b40;
+
+  --borealis-code-border: #afa5c8;
+
+  --borealis-glass: linear-gradient(
+    115deg,
+    rgba(64, 91, 157, 0.72),
+    rgba(127, 79, 172, 0.65)
+  );
+
+  --borealis-glass-border:
+    rgba(255, 255, 255, 0.50);
+}
+
+/* DARK MODE */
+[data-md-color-scheme="slate"] {
+  --md-code-bg-color: #303953;
+  --md-code-fg-color: #f1f2fa;
+
+  --borealis-code-border: #606b8b;
+
+  --borealis-glass: linear-gradient(
+    115deg,
+    rgba(58, 82, 151, 0.58),
+    rgba(108, 75, 157, 0.50)
+  );
+
+  --borealis-glass-border:
+    rgba(205, 195, 245, 0.22);
+}
+
+/* CODE BOXES */
+.md-typeset .highlight {
+  border: 1px solid var(--borealis-code-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.md-typeset .highlight pre {
+  margin: 0;
+}
+
+.md-typeset pre:not(.highlight pre) {
+  border: 1px solid var(--borealis-code-border);
+  border-radius: 10px;
+}
+
+.md-typeset code {
+  color: var(--md-code-fg-color);
+}
+
+/* GLASS HERO: visual changes only */
+.hero,
+.hero-banner,
+.borealis-hero {
+  background: var(--borealis-glass) !important;
+  border: 1px solid var(--borealis-glass-border);
+
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+
+  box-shadow:
+    0 12px 32px rgba(30, 28, 72, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Enlarge Borealis logo in the header */
+.md-header__button.md-logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  max-width: none;
+}
+
+/* Adjust logo container */
+.md-header__button.md-logo {
+  width: auto;
+  height: auto;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}

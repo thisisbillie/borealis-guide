@@ -1,45 +1,60 @@
-# Borealis Guides
+---
+hide:
+  - navigation
+  - toc
+---
 
-Find, share, and manage research data with Borealis, the Canadian Dataverse Repository.
+<div class="borealis-home">
 
-```{note}
-This is a guide design prototype. Starter pages outline the intended content; consult the [current Borealis guides](https://borealisdata.ca/guides/en/latest/) for operational instructions.
-```
+  <section class="borealis-hero">
+    <h1> Welcome to Borealis Guides</h1>
 
-## Start here
+    <p class="hero-description">
+      Find, deposit, and manage research data in
+      Canada's Dataverse repository.
+    </p>
 
-New to Borealis? Start with the overview, then choose the guide for your task.
+    <label class="hero-search">
+      <span class="hero-search-icon">⌕</span>
+      <input
+        type="search"
+        placeholder="Search documentation..."
+        aria-label="Search documentation"
+        readonly
+        onclick="document.querySelector('.md-search__input')?.focus(); document.querySelector('[data-md-component=search]')?.classList.add('md-search--active');"
+      >
+    </label>
+  </section>
 
-```{toctree}
-:maxdepth: 2
-:caption: GETTING STARTED
+  <section class="borealis-cards">
 
-getting-started
-```
+    <a class="borealis-card" href="getting-started/">
+      <span class="card-icon blue">01</span>
+      <h2>Getting Started</h2>
+      <p>Learn the basics of Borealis and get started.</p>
+      <span class="card-link">Explore guide →</span>
+    </a>
 
-```{toctree}
-:maxdepth: 2
-:caption: USER GUIDE
+    <a class="borealis-card" href="find-data/">
+      <span class="card-icon purple">02</span>
+      <h2>Find Data</h2>
+      <p>Discover and access research datasets.</p>
+      <span class="card-link">Explore guide →</span>
+    </a>
 
-account
-find-data
-deposit-data
-```
+    <a class="borealis-card" href="deposit-data/">
+      <span class="card-icon pink">03</span>
+      <h2>Deposit Data</h2>
+      <p>Upload, describe, and publish research data.</p>
+      <span class="card-link">Explore guide →</span>
+    </a>
 
-```{toctree}
-:maxdepth: 2
-:caption: COLLECTION MANAGEMENT
+    <a class="borealis-card" href="manage-collections/">
+      <span class="card-icon violet">04</span>
+      <h2>Manage Collections</h2>
+      <p>Manage collections, permissions, and settings.</p>
+      <span class="card-link">Explore guide →</span>
+    </a>
 
-manage-collections
-```
-
-```{toctree}
-:maxdepth: 1
-:caption: RESOURCES
-
-support
-```
-
-## Useful links
-
-[Visit Borealis](https://borealisdata.ca/) · [Current user guides](https://borealisdata.ca/guides/en/latest/) · [Dataverse documentation](https://guides.dataverse.org/en/latest/)
+  </section>
+</div>

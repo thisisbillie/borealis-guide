@@ -1,0 +1,102 @@
+[project]
+site_name = "Borealis Guides"
+site_description = "Documentation for Borealis, the Canadian Dataverse Repository"
+site_url = "https://thisisbillie.github.io/borealis-guide/"
+docs_dir = "docs"
+extra_css = ["stylesheets/extra.css"]
+
+[project.plugins.i18n]
+docs_structure = "suffix"
+fallback_to_default = true
+reconfigure_theme = true
+
+[[project.plugins.i18n.languages]]
+locale = "en"
+name = "English"
+default = true
+
+[[project.plugins.i18n.languages]]
+locale = "fr"
+name = "Français"
+site_name = "Guides Borealis"
+
+[project.plugins.i18n.languages.nav_translations]
+"Home" = "Accueil"
+"User Guide" = "Guide d'utilisation"
+"Admin Guide" = "Guide d'administration"
+"API Guide" = "Guide API"
+"Getting Started" = "Pour commencer"
+"Find Data" = "Trouver des données"
+"Deposit Data" = "Déposer des données"
+"Manage Collections" = "Gérer les collections"
+"Support" = "Assistance"
+
+
+
+nav = [
+  { "Home" = "index.md" },
+
+  { "User Guide" = [
+    "user-guide/01-getting-started.md",
+    { "User Accounts" = "user-guide/user-accounts.md" },
+    { "Finding & Exploring Data" = "user-guide/03-finding-exploring.md" },
+    { "Downloading & Citing Data" = "user-guide/04-downloading-Citing.md"},
+    { "Criteria for Depositing Data" = "user-guide/05-deposit.md"},
+    { "Collections" = "user-guide/06-collections.md"},
+    { "Datasets" = "user-guide/07-datasets.md"},
+    { "Files" = "user-guide/08-files.md"},
+    { "Publishing Data" = "user-guide/09-publishing.md"},
+    { "Deleting Data" = "user-guide/10-deleting.md"},
+    { "Permissions" = "user-guide/11-permissions.md"},
+    { "Support & Additional Resources" = "user/guide/12-support.md"},
+  ] },
+
+  { "Admin Guide" = [
+    "admin-guide/index.md",
+    { "Manage Collections" = "admin-guide/collections.md" },
+    { "Users & Permissions" = "admin-guide/users-permissions.md" },
+    { "Review & Publish" = "admin-guide/review-publish.md" },
+  ] },
+
+  { "API Guide" = [
+    "api-guide/index.md",
+    { "Authentication" = "api-guide/authentication.md" },
+    { "Native API" = "api-guide/native-api.md" },
+    { "Search API" = "api-guide/search-api.md" },
+  ] },
+]
+
+[project.theme]
+features = [
+  "navigation.tabs",
+  "navigation.tabs.sticky",
+  "navigation.instant",
+  "navigation.sections",
+  "navigation.path",
+  "navigation.tracking",
+  "navigation.indexes",
+  "toc.follow",
+  "navigation.top",
+  "search.suggest",
+  "search.highlight",
+  "content.code.copy",
+  "content.action.edit",
+  "content.action.view",
+]
+logo = "images/logo.svg"
+
+# Light mode
+[[project.theme.palette]]
+scheme = "default"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+# Dark mode
+[[project.theme.palette]]
+scheme = "slate"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"

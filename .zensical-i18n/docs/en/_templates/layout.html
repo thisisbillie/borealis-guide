@@ -1,0 +1,61 @@
+{% extends "basic/layout.html" %}
+{% set is_admin = pagename == 'manage-collections' %}
+{% set is_api = pagename == 'api-guide' %}
+{% set guide = 'Admin Guide' if is_admin else ('API Guide' if is_api else 'User Guide') %}
+{% block header %}
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="{{ pathto('index') }}"><span class="brand-mark" aria-hidden="true"></span>Borealis <span class="brand-sub">Guides</span></a>
+    <nav class="guide-tabs" aria-label="Guides">
+      <a href="{{ pathto('index') }}" {% if not is_admin and not is_api %}aria-current="page"{% endif %}>User Guide</a>
+      <a href="{{ pathto('api-guide') }}" {% if is_api %}aria-current="page"{% endif %}>API Guide</a>
+      <a href="{{ pathto('manage-collections') }}" {% if is_admin %}aria-current="page"{% endif %}>Admin Guide</a>
+    </nav>
+    <div class="header-tools"><button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+      <form action="{{ pathto('search') }}" method="get" role="search"><label class="sr-only" for="guide-search">Search guides</label><input id="guide-search" name="q" placeholder="Search guides" autocomplete="off"><kbd>Ctrl K</kbd></form>
+      <button id="menu-toggle" aria-controls="guide-sidebar" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+{% endblock %}
+{% block relbar1 %}{% endblock %}
+{% block relbar2 %}{% endblock %}
+{% block content %}
+<div class="docs-shell">
+  <aside id="guide-sidebar" class="guide-sidebar" aria-label="Guide navigation">
+    <p class="sidebar-label">{{ guide }}</p>
+    {% if is_admin %}
+    <a class="side-link active" aria-current="page" href="{{ pathto('manage-collections') }}">Manage a collection</a>
+    {% elif is_api %}
+    <a class="side-link active" aria-current="page" href="{{ pathto('api-guide') }}">Getting started with APIs</a>
+    {% else %}
+    <details open><summary>Getting started</summary><div class="side-group">
+    {% for id, label in [('index','Overview'),('getting-started','About Borealis'),('account','Your account')] %}
+      <a class="side-link {% if pagename == id %}active{% endif %}" href="{{ pathto(id) }}" {% if pagename == id %}aria-current="page"{% endif %}>{{ label }}</a>
+    {% endfor %}
+    </div></details>
+    <details open><summary>Working with data</summary><div class="side-group">
+    {% for id, label in [('find-data','Find and use data'),('deposit-data','Deposit and publish data')] %}
+      <a class="side-link {% if pagename == id %}active{% endif %}" href="{{ pathto(id) }}" {% if pagename == id %}aria-current="page"{% endif %}>{{ label }}</a>
+    {% endfor %}
+    </div></details>
+    {% endif %}
+    <p class="sidebar-label resources-label">Resources</p>
+    <a class="side-link {% if pagename == 'support' %}active{% endif %}" href="{{ pathto('support') }}">Help and resources</a>
+    <a class="side-link" href="https://borealisdata.ca/">Visit Borealis <span aria-hidden="true">↗</span></a>
+  </aside>
+  <main id="main-content" class="article-column">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ pathto('index') }}">Home</a><span aria-hidden="true">›</span><span>{{ guide }}</span><span aria-hidden="true">›</span><span>{{ title|striptags }}</span></nav>
+    <article class="body" role="main">{% block body %}{{ body }}{% endblock %}</article>
+    {% if pagename not in ['search','genindex'] %}
+    <div class="article-meta"><a href="https://github.com/thisisbillie/borealis-guide/edit/main/docs/{{ pagename }}.md">Edit this page</a><span>Documentation prototype</span></div>
+    <nav class="page-pagination" aria-label="Adjacent pages">
+      {% if prev %}<a href="{{ prev.link }}"><small>Previous</small>{{ prev.title|striptags }}</a>{% endif %}
+      {% if next %}<a class="next" href="{{ next.link }}"><small>Next</small>{{ next.title|striptags }}</a>{% endif %}
+    </nav>{% endif %}
+  </main>
+  <aside class="page-toc" aria-label="On this page"><strong>On this page</strong>{{ toc }}</aside>
+</div>
+{% endblock %}
+{% block footer %}<footer class="site-footer">Borealis Guides <span>Find, share, and manage research data.</span></footer>{% endblock %}

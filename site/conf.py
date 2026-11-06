@@ -1,0 +1,11 @@
+project = "Borealis Guides"
+author = "Borealis"
+extensions = ["myst_parser"]
+html_theme = "sphinx_rtd_theme"
+html_title = "Borealis Guides"
+html_static_path = ["_static"]
+html_css_files = ["borealis.css"]
+html_theme_options = {"navigation_depth": 3, "collapse_navigation": False, "style_nav_header_background": "#008996"}
+html_context = {"display_github": True, "github_user": "thisisbillie", "github_repo": "borealis-guide", "github_version": "main", "conf_py_path": "/docs/"}
+exclude_patterns = ["_build"]
+html_show_sourcelink = False

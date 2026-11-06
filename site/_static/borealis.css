@@ -1,0 +1,21 @@
+/* Palette inspired by the supplied Borealis colour reference. */
+:root { --teal: #008996; --blue: #285f91; --purple: #7537bd; --magenta: #94188f; --plum: #813d79; --navy: #374766; }
+body, .wy-body-for-nav { background: #f5f7fa; }
+.wy-nav-side { background: #26374d; }
+.wy-side-nav-search { background: linear-gradient(115deg, #008996, #285f91 40%, #813d79 78%, #7537bd); padding: 28px 20px 22px; }
+.wy-side-nav-search > a { font-size: 25px; letter-spacing: -.5px; }
+.wy-side-nav-search input[type=text] { border-color: transparent; border-radius: 5px; padding: 10px 13px; }
+.wy-menu-vertical header, .wy-menu-vertical p.caption { color: #81d9df; font-size: 12px; letter-spacing: 1px; }
+.wy-menu-vertical a { color: #e0e7f1; }
+.wy-menu-vertical a:hover { background: #374766; }
+.wy-nav-content { max-width: 1050px; min-height: 100vh; padding: 38px 56px; }
+h1,h2,h3 { font-family: system-ui, sans-serif; color: #273b53; }
+h1 { font-size: 34px; letter-spacing: -.9px; border-top: 5px solid; border-image: linear-gradient(90deg,#008996,#94188f,#7537bd,#374766) 1; padding-top: 24px; }
+h2 { font-size: 23px; margin-top: 32px; }
+a { color: #006f7a; } a:visited { color: #70408b; }
+.rst-content .note { background: #edf7f8; }
+.rst-content .note .admonition-title { background: #007984; }
+.rst-content .toctree-wrapper ul { line-height: 1.8; }
+.btn-neutral { border-radius: 4px; }
+.wy-nav-top { background: #007984; }
+@media (max-width: 768px) { .wy-nav-content { padding: 24px; } h1 { font-size: 29px; } }
