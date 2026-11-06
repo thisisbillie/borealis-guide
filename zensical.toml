@@ -4,6 +4,7 @@ site_description = "Documentation for Borealis, the Canadian Dataverse Repositor
 site_url = "https://thisisbillie.github.io/borealis-guide/"
 docs_dir = "docs"
 extra_css = ["stylesheets/extra.css"]
+extra_javascript = ["javascripts/hero-search.js"]
 
 nav = [
   { "Home" = "index.md" },

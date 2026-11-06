@@ -347,43 +347,311 @@ html:lang(fr) .md-header .md-search__button::after {
 .borealis-hero .hero-description {
   color: #ffffff;
   font-size: 1rem;
-  max-width: 650px;
+  max-width: 800px;
   line-height: 1.65;
 }
 
-/* Search field */
 
-.hero-search {
+
+/* =====================================
+   SHARED SCOPED SEARCH
+   ===================================== */
+
+.scope-search-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 12px 16px;
+  border-top: 1px solid #e4deef;
+  color: #322b4c;
+  font-size: 0.76rem;
+}
+
+.scope-search-filters strong {
+  font-weight: 700;
+}
+
+.scope-search-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.scope-search-checkbox {
+  accent-color: #6243a2;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Homepage search */
+
+.borealis-search {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 760px;
+  margin-top: 28px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(26, 21, 58, 0.12);
+}
+
+.borealis-search .hero-search {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #ffffff;
-  border-radius: 10px;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0;
   padding: 14px 18px;
-  margin-top: 28px;
-  max-width: 760px;
-  cursor: pointer;
+  background: transparent;
+  border-radius: 12px;
 }
 
 .hero-search-icon {
-  font-size: 1.5rem;
   color: #49348f;
+  font-size: 1.5rem;
 }
 
-.hero-search input {
+.borealis-search .scope-search-input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
   border: none;
   outline: none;
-  width: 100%;
   background: transparent;
   color: #29223e;
+  font: inherit;
   font-size: 0.9rem;
-  cursor: pointer;
 }
 
-.hero-search input::placeholder {
+.borealis-search .scope-search-input::placeholder {
   color: #514963;
   opacity: 1;
 }
+
+.borealis-hero {
+  position: relative;
+  z-index: 2;
+}
+
+/* Search suggestions */
+
+.scope-search-results[hidden],
+.scope-search-backdrop[hidden] {
+  display: none !important;
+}
+
+.scope-search-results {
+  max-height: 370px;
+  overflow-y: auto;
+  background: #ffffff;
+  color: #29223e;
+}
+
+.borealis-search > .scope-search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  border: 1px solid #d9d0ea;
+  border-radius: 12px;
+  box-shadow: 0 14px 32px rgba(20, 14, 55, 0.20);
+}
+
+.md-typeset .scope-search-result,
+.scope-search-dialog .scope-search-result {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 16px;
+  color: #29223e;
+  text-decoration: none;
+}
+
+.scope-search-result + .scope-search-result {
+  border-top: 1px solid #eee9f6;
+}
+
+.md-typeset .scope-search-result:hover,
+.scope-search-dialog .scope-search-result:hover,
+.scope-search-result:focus-visible {
+  background: #eee8fa;
+}
+
+.scope-search-result strong {
+  color: #392a77;
+  font-size: 0.88rem;
+}
+
+.scope-search-result small {
+  color: #665d78;
+  font-size: 0.7rem;
+}
+
+.scope-search-result span {
+  color: #514963;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.scope-search-empty {
+  margin: 0;
+  padding: 15px;
+  color: #514963;
+  font-size: 0.8rem;
+}
+
+/* Header search dialog */
+
+.scope-search-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: min(12vh, 100px) 16px 20px;
+  background: rgba(13, 12, 29, 0.55);
+}
+
+body.scope-search-open {
+  overflow: hidden;
+}
+
+.scope-search-dialog {
+  width: 100%;
+  max-width: 690px;
+  max-height: 80vh;
+  overflow: hidden;
+  background: #ffffff;
+  color: #29223e;
+  border-radius: 14px;
+  box-shadow: 0 22px 65px rgba(0, 0, 0, 0.30);
+}
+
+.scope-search-dialog-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+}
+
+.scope-search-dialog .scope-search-input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #29223e;
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.scope-search-dialog .scope-search-input::placeholder {
+  color: #615773;
+}
+
+.scope-search-close {
+  border: 0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: transparent;
+  color: #514963;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.scope-search-close:hover {
+  background: #eee8fa;
+  color: #392a77;
+}
+
+.scope-search-dialog > .scope-search-results {
+  max-height: 52vh;
+}
+
+@media (max-width: 650px) {
+  .scope-search-filters {
+    gap: 10px;
+  }
+
+  .scope-search-filters strong {
+    width: 100%;
+  }
+}
+
+/* Results dropdown */
+
+.hero-search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  max-height: 340px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #ded6eb;
+  border-radius: 12px;
+  box-shadow: 0 14px 32px rgba(23, 16, 47, 0.23);
+}
+
+.hero-search-results[hidden] {
+  display: none !important;
+}
+
+/* Individual suggestions */
+
+.md-typeset .hero-search-result {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  color: #29223e;
+  text-decoration: none;
+}
+
+.md-typeset .hero-search-result + .hero-search-result {
+  border-top: 1px solid #eeeaf5;
+}
+
+.md-typeset .hero-search-result:hover,
+.md-typeset .hero-search-result:focus-visible {
+  background: #f2edfb;
+}
+
+.md-typeset .hero-search-result strong {
+  color: #352b6a;
+  font-size: 0.9rem;
+}
+
+.md-typeset .hero-search-result small {
+  color: #69617a;
+  font-size: 0.7rem;
+}
+
+.md-typeset .hero-search-result span {
+  color: #514963;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.hero-search-empty {
+  padding: 14px 16px;
+  color: #514963;
+}
+
 
 /* =====================================
    GUIDE CARDS
