@@ -344,11 +344,17 @@ function close(restoreFocus = true, deferReset = false) {
   previousFocus = null;
 }
 
-  function setupHome() {
-    document.querySelectorAll(
-      '[data-borealis-search="hero"]'
-    ).forEach(setup);
+function setupHome() {
+  const homeSearch = document.querySelectorAll(
+    '[data-borealis-search="hero"]'
+  );
+
+  homeSearch.forEach(setup);
+
+  if (homeSearch.length) {
+    resetSearch();
   }
+}
 
   /* Share search text between homepage and header */
 
@@ -449,4 +455,11 @@ function close(restoreFocus = true, deferReset = false) {
   if (window.document$?.subscribe) {
     window.document$.subscribe(setupHome);
   }
+
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    setupHome();
+  }
+});
+
 })();
