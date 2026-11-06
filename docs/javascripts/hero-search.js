@@ -276,38 +276,73 @@
       '[data-borealis-search="dialog"]'
     ));
 
-    backdrop.addEventListener('click', (e) => {
-      if (
-        e.target === backdrop ||
-        e.target.closest('.scope-search-close')
-      ) close();
-    });
+backdrop.addEventListener('click', (e) => {
+  if (e.target.closest('.scope-search-result')) {
+    close(false, true);
+    return;
+  }
+
+  if (
+    e.target === backdrop ||
+    e.target.closest('.scope-search-close')
+  ) close();
+});
 
     return backdrop;
   }
 
-  function open() {
-    const element = dialog();
+ function resetSearch() {
+  clearTimeout(timer);
+  ++revision;
+  query = '';
 
-    if (element.hidden) {
-      previousFocus = document.activeElement;
+  document.querySelectorAll('.scope-search-input')
+    .forEach((input) => {
+      input.value = '';
+    });
+
+  widgets().forEach((host) => {
+    const panel = host.querySelector('.scope-search-results');
+
+    if (panel) {
+      panel.hidden = true;
+      panel.replaceChildren();
     }
+  });
+}
 
-    element.hidden = false;
-    document.body.classList.add('scope-search-open');
-    element.querySelector('.scope-search-input').focus();
+function open() {
+  const element = dialog();
 
-    refresh();
+  if (element.hidden) {
+    previousFocus = document.activeElement;
   }
 
-  function close() {
-    if (!backdrop) return;
+  resetSearch();
 
-    backdrop.hidden = true;
-    document.body.classList.remove('scope-search-open');
+  element.hidden = false;
+  document.body.classList.add('scope-search-open');
+  element.querySelector('.scope-search-input').focus();
+}
 
-    if (previousFocus?.isConnected) previousFocus.focus();
+function close(restoreFocus = true, deferReset = false) {
+  if (!backdrop) return;
+
+  backdrop.hidden = true;
+  document.body.classList.remove('scope-search-open');
+
+  if (deferReset) {
+    setTimeout(resetSearch, 0);
+  } else {
+    resetSearch();
   }
+
+  if (restoreFocus && previousFocus?.isConnected) {
+    previousFocus.focus();
+  }
+
+  previousFocus = null;
+}
 
   function setupHome() {
     document.querySelectorAll(
