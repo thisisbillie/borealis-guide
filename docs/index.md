@@ -32,7 +32,7 @@ hide:
 
   <section class="borealis-cards">
 
-    <a class="borealis-card" href="getting-started/">
+    <a class="borealis-card" href="user-guide/01-getting-started/">
       <span class="card-icon blue">01</span>
       <h2>Getting Started</h2>
       <p>Learn the basics of Borealis and get started.</p>

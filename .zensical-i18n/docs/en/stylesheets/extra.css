@@ -186,23 +186,7 @@
 }
 
 /* Palette icon and language code should share the same visual baseline */
-/* Keep light/dark toggle icons in the same position */
-.md-header [data-md-component="palette"]
-.md-header__button:not([hidden]) {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  padding: 0 !important;
-  margin: 0;
-}
-
-.md-header [data-md-component="palette"]
-.md-header__button svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
+.md-header__option .md-header__button svg {
   width: 24px;
   height: 24px;
 }
@@ -738,9 +722,31 @@ body.scope-search-open {
 }
 
 .borealis-card .card-link {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+  background: var(--md-default-bg-color);
   color: var(--md-typeset-a-color);
-  font-weight: 700;
-  font-size: 0.85rem;
+
+  font-size: 1.25rem;
+  font-weight: 1000;
+  line-height: 1;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.borealis-card:hover .card-link {
+  transform: translate(2px, -2px);
+  background: var(--home-border);
 }
 
 /* =====================================
@@ -766,6 +772,7 @@ body.scope-search-open {
 
   .md-typeset .borealis-card {
     padding: 22px;
+    position: relative;
   }
 }
 
