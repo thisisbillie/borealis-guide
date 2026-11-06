@@ -1,4 +1,3 @@
-
 /* =====================================
    BOREALIS DESIGN SYSTEM
    ===================================== */
@@ -74,47 +73,207 @@
   }
 }
 
-
 /* =====================================
    HEADER AND NAVIGATION
    ===================================== */
 
 .md-header {
-  background: linear-gradient(
-    110deg,
-    #293c82,
-    #6243a2 65%,
-    #8658b4
-  );
+  background: linear-gradient(110deg, #293c82, #6243a2 65%, #8658b4);
+  color: #fff;
 }
 
-/* Force readable white header text */
-
-.md-header,
-.md-header *,
+/* Header text and icons only. Do not color every descendant:
+   the language dropdown needs independent light/dark text colors. */
 .md-header__title,
 .md-header__button,
-.md-header .md-search__icon {
-  color: #ffffff;
+.md-header .md-i18n__code {
+  color: #fff;
 }
 
-/* Built-in header search */
+.md-header__inner.md-grid {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: none !important;
+  padding-left: 24px;
+  padding-right: 24px;
+}
 
+.md-header__title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Remove unused repository area to keep controls at far right */
+.md-header__source {
+  display: none !important;
+}
+
+/* Preserve the official Borealis site logo */
+.md-header__button.md-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  padding: 4px;
+}
+
+.md-header__button.md-logo img {
+  width: 48px;
+  height: 48px;
+  max-width: none;
+  object-fit: contain;
+}
+
+/* The search dialog keeps its built-in functionality */
 .md-header .md-search__form {
   background: rgba(19, 15, 55, 0.35);
   border-radius: 8px;
 }
 
 .md-header .md-search__input {
-  color: #ffffff;
+  color: #fff;
 }
 
 .md-header .md-search__input::placeholder {
   color: #f4efff;
 }
 
-/* Horizontal navigation */
+/* =====================================
+   HEADER CONTROLS
+   Shared height, alignment, spacing, and color
+   ===================================== */
 
+/* Align header control containers */
+.md-header__option,
+.md-header .md-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  height: 40px;
+  margin: 0 0 0 8px;
+  padding: 0;
+}
+
+/* Align language selector internally */
+.md-i18n .md-select {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+/* These selectors exclude the site logo and hamburger menu */
+.md-header__option .md-header__button:not([hidden]),
+.md-header .md-i18n__button,
+.md-header .md-search__button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 !important;
+  margin: 0;
+  line-height: 1;
+  background: transparent;
+  color: #fff !important;
+  border: 0;
+  border-radius: 8px;
+}
+
+/* Palette icon and language code should share the same visual baseline */
+.md-header__option .md-header__button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.md-header__option .md-header__button:hover,
+.md-header .md-search__button:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.md-header__option .md-header__button:focus-visible,
+.md-header .md-search__button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Language selector: display EN or FR, no translate icon or arrow */
+.md-i18n .md-i18n__button > .md-icon:first-child,
+.md-i18n .md-i18n__chevron,
+.md-i18n .md-i18n__name {
+  display: none !important;
+}
+
+.md-i18n .md-i18n__code {
+  display: block;
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+/* Search: remove inline label and draw a consistent white magnifier */
+.md-header .md-search__button {
+  position: relative;
+  transform: translateY(4px);
+  font-size: 0 !important;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.md-header .md-search__button::before {
+  content: "" !important;
+  display: block;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  background: #fff !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Tooltip uses the current HTML page language */
+.md-header .md-search__button::after {
+  content: "Search · Ctrl+K" !important;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  left: auto;
+  transform: none;
+  z-index: 1000;
+  display: block;
+  width: max-content;
+  padding: 7px 11px;
+  border-radius: 6px;
+  background: #25283d;
+  color: #fff;
+  font-size: 12px !important;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+}
+
+html:lang(fr) .md-header .md-search__button::after {
+  content: "Rechercher · Ctrl+K" !important;
+}
+
+.md-header .md-search__button:hover::after,
+.md-header .md-search__button:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Horizontal guide tabs */
 .md-tabs {
   background: #433482;
 }
@@ -128,7 +287,7 @@
 .md-tabs__link--active,
 .md-tabs__link:hover,
 .md-tabs__item--active .md-tabs__link {
-  color: #ffffff;
+  color: #fff;
   opacity: 1;
 }
 
@@ -401,19 +560,81 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-/* Enlarge Borealis logo in the header */
-.md-header__button.md-logo img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  max-width: none;
+/* =====================================
+   EN / FR DROPDOWN
+   ===================================== */
+
+[data-md-color-scheme="default"] .md-i18n {
+  --b-lang-bg: #faf8ff;
+  --b-lang-text: #29243d;
+  --b-lang-border: #d9d1e7;
+  --b-lang-hover: #eee8fa;
+  --b-lang-selected: #e8e0f6;
+  --b-lang-check: #7656b5;
 }
 
-/* Adjust logo container */
-.md-header__button.md-logo {
-  width: auto;
-  height: auto;
+[data-md-color-scheme="slate"] .md-i18n {
+  --b-lang-bg: #292c43;
+  --b-lang-text: #f5f2ff;
+  --b-lang-border: #494d68;
+  --b-lang-hover: #383b56;
+  --b-lang-selected: #494365;
+  --b-lang-check: #c5a8ff;
+}
+
+.md-i18n .md-select__inner.md-i18n__inner {
+  min-width: 100px !important;
+  width: 100px;
+  background: var(--b-lang-bg) !important;
+  color: var(--b-lang-text) !important;
+  border: 1px solid var(--b-lang-border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
+
+.md-i18n .md-i18n__list {
   padding: 4px;
+}
+
+.md-i18n .md-select__link.md-i18n__link {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  color: var(--b-lang-text) !important;
+  background: transparent;
+  border-radius: 6px;
+}
+
+.md-i18n .md-i18n__locale {
+  color: var(--b-lang-text) !important;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 1;
+}
+
+.md-i18n .md-i18n__link:hover,
+.md-i18n .md-i18n__link:focus {
+  background: var(--b-lang-hover) !important;
+}
+
+.md-i18n .md-i18n__link[aria-current] {
+  background: var(--b-lang-selected) !important;
+}
+
+.md-i18n .md-i18n__check svg {
+  color: var(--b-lang-check) !important;
+}
+
+@media screen and (max-width: 760px) {
+  .md-header__inner.md-grid {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* Respect Zensical's hidden theme-toggle icons */
+.md-header__button[hidden] {
+  display: none !important;
 }

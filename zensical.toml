@@ -5,40 +5,12 @@ site_url = "https://thisisbillie.github.io/borealis-guide/"
 docs_dir = "docs"
 extra_css = ["stylesheets/extra.css"]
 
-[project.plugins.i18n]
-docs_structure = "suffix"
-fallback_to_default = true
-reconfigure_theme = true
-
-[[project.plugins.i18n.languages]]
-locale = "en"
-name = "English"
-default = true
-
-[[project.plugins.i18n.languages]]
-locale = "fr"
-name = "Français"
-site_name = "Guides Borealis"
-
-[project.plugins.i18n.languages.nav_translations]
-"Home" = "Accueil"
-"User Guide" = "Guide d'utilisation"
-"Admin Guide" = "Guide d'administration"
-"API Guide" = "Guide API"
-"Getting Started" = "Pour commencer"
-"Find Data" = "Trouver des données"
-"Deposit Data" = "Déposer des données"
-"Manage Collections" = "Gérer les collections"
-"Support" = "Assistance"
-
-
-
 nav = [
   { "Home" = "index.md" },
 
   { "User Guide" = [
-    "user-guide/01-getting-started.md",
-    { "User Accounts" = "user-guide/user-accounts.md" },
+    {"Getting Started" = "user-guide/01-getting-started.md"},
+    { "User Accounts" = "user-guide/02-user-accounts.md" },
     { "Finding & Exploring Data" = "user-guide/03-finding-exploring.md" },
     { "Downloading & Citing Data" = "user-guide/04-downloading-Citing.md"},
     { "Criteria for Depositing Data" = "user-guide/05-deposit.md"},
@@ -66,11 +38,45 @@ nav = [
   ] },
 ]
 
+[project.markdown_extensions]
+toc.toc_depth = "2-3"
+toc.permalink = true
+
+[project.plugins.i18n]
+docs_structure = "suffix"
+fallback_to_default = true
+reconfigure_theme = true
+
+[[project.plugins.i18n.languages]]
+locale = "en"
+name = "English"
+default = true
+
+[[project.plugins.i18n.languages]]
+locale = "fr"
+name = "Français"
+site_name = "Guides Borealis"
+
+[project.plugins.i18n.languages.nav_translations]
+"Home" = "Accueil"
+"User Guide" = "Guide d'utilisation"
+"Admin Guide" = "Guide d'administration"
+"API Guide" = "Guide API"
+"Getting Started" = "Pour commencer"
+"Find Data" = "Trouver des données"
+"Deposit Data" = "Déposer des données"
+"Manage Collections" = "Gérer les collections"
+"Support" = "Assistance"
+
+
+[project.extra]
+generator = false
+
 [project.theme]
 features = [
   "navigation.tabs",
-  "navigation.tabs.sticky",
   "navigation.instant",
+  "header.autohide",
   "navigation.sections",
   "navigation.path",
   "navigation.tracking",

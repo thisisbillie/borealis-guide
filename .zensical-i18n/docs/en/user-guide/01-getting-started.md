@@ -1,4 +1,4 @@
-![Borealis](../images/user-guide/logo-long.png){ width="800" }
+![Borealis](../images/user-guide/logo-long.png)
 
 Borealis, the Canadian Dataverse Repository, is a bilingual, multidisciplinary, secure, Canadian research data repository, supported by academic libraries and research institutions across Canada. Borealis supports open discovery, management, sharing, and preservation of Canadian research data. Dataverse is an open-source repository software developed by the Institute for Quantitative Social Science (IQSS) at Harvard University, with contributors and adopters across Canada and the world.
 
