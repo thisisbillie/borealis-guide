@@ -36,28 +36,28 @@ hide:
       <span class="card-icon blue">01</span>
       <h2>Getting Started</h2>
       <p>Learn the basics of Borealis and get started.</p>
-      <span class="card-link">→</span>
+      <span class="card-link" aria-hidden="true">↗</span>
     </a>
 
     <a class="borealis-card" href="user-guide/03-finding-exploring.md">
       <span class="card-icon purple">02</span>
       <h2>Find Data</h2>
       <p>Discover and access research datasets.</p>
-      <span class="card-link">→</span>
+      <span class="card-link" aria-hidden="true">↗</span>
     </a>
 
     <a class="borealis-card" href="user-guide/04-downloading-citing.md">
       <span class="card-icon violet">03</span>
       <h2>Download Data</h2>
       <p>Download, cite, and request access to data.</p>
-      <span class="card-link">→</span>
+      <span class="card-link" aria-hidden="true">↗</span>
     </a>
 
     <a class="borealis-card" href="user-guide/05-deposit.md">
       <span class="card-icon pink">04</span>
       <h2>Deposit Data</h2>
       <p>Upload, describe, and publish research data.</p>
-      <span class="card-link">→</span>
+      <span class="card-link" aria-hidden="true">↗</span>
     </a>
 
 
