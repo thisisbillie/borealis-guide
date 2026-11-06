@@ -186,7 +186,23 @@
 }
 
 /* Palette icon and language code should share the same visual baseline */
-.md-header__option .md-header__button svg {
+/* Keep light/dark toggle icons in the same position */
+.md-header [data-md-component="palette"]
+.md-header__button:not([hidden]) {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.md-header [data-md-component="palette"]
+.md-header__button svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
   width: 24px;
   height: 24px;
 }
