@@ -185,10 +185,39 @@
   border-radius: 8px;
 }
 
-/* Palette icon and language code should share the same visual baseline */
-.md-header__option .md-header__button svg {
+/* Keep light/dark toggle fixed in the same position */
+.md-header form.md-header__option[data-md-component="palette"] {
+  position: relative;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  margin: 0 0 0 8px;
+  padding: 0;
+  align-self: center;
+}
+
+.md-header form.md-header__option[data-md-component="palette"]
+> .md-header__button:not([hidden]) {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0 !important;
+  transform: none !important;
+  line-height: 0;
+}
+
+.md-header form.md-header__option[data-md-component="palette"]
+> .md-header__button svg {
+  display: block;
   width: 24px;
   height: 24px;
+  margin: 0;
 }
 
 .md-header__option .md-header__button:hover,
